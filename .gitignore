@@ -2,8 +2,12 @@
 data/
 experiments/
 checkpoints/
+outputs/logits/
+outputs/checkpoints/
+outputs/resume/
 *.pth
 *.pt
+*.npz
 *.zip
 
 # Python

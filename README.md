@@ -1,163 +1,86 @@
 # Robust crop disease screening with explainable deep learning
 
-Plant disease classifiers often report very high accuracy on PlantVillage, a dataset of clean leaf photos taken on plain backgrounds. Real field photos are blurred, noisy, dark or compressed. This project asks how much of that accuracy survives when image quality drops, whether training with corrupted images helps, and whether the models look at the diseased part of the leaf when they make a decision.
+Code and results for the paper "Beyond Clean Accuracy: Controlled Synthetic Corruption Evaluation and Corruption-Aware Training for Plant Disease Classification" (under review).
 
-The work covers four parts:
+Plant disease classifiers often report very high accuracy on PlantVillage, a dataset of clean leaf photos taken on plain backgrounds. Field photos are blurred, noisy or dark. This project measures how much of that accuracy survives when image quality drops, whether training with corrupted images helps, and whether the models look at the leaf when they decide.
 
-1. A transfer-learning baseline (EfficientNetV2-S) with a leakage-aware data split.
-2. A corruption benchmark: Gaussian noise, brightness reduction and Gaussian blur, each at three severity levels.
-3. An architecture comparison (ResNet50, DenseNet121, EfficientNet-B0, EfficientNetV2-S) and a corruption-aware training ablation.
-4. Explainability and reliability checks: Grad-CAM, reliability diagrams and the multiclass Brier score.
+We train ImageNet-pretrained classifiers with frozen backbones on the 38-class PlantVillage colour images and test them on the clean test set and on nine corrupted copies of it: brightness reduction, Gaussian noise and Gaussian blur, each at three severities. On ResNet50 we also test corruption-aware training (A0 to A4) and class-balanced oversampling. Every configuration is trained with seeds 0 to 4 under the same budget, and differences are checked with paired t-tests and Holm correction. Calibration (ECE, MCE, Brier score) is measured for every model on clean and corrupted images, and Grad-CAM is checked against leaf masks.
 
-> Status: research code for a paper under review. Numerical results will be added to this README after publication. Figures from the notebooks are included below.
+![Methodology](outputs/figures/fig01_methodology.png)
+
+## Main results
+
+Mean ± SD over five seeds, accuracy in %. Mean corrupted is the average over the nine corrupted test sets; worst case is the lowest of the nine.
+
+| Configuration | Clean | Mean corrupted | Worst case |
+|---|---|---|---|
+| ResNet50 (A0) | 96.58 ± 0.50 | 79.37 ± 1.34 | 38.83 ± 4.36 |
+| DenseNet121 | 95.73 ± 0.36 | 77.98 ± 1.58 | 35.52 ± 5.57 |
+| EfficientNet-B0 | 96.01 ± 0.36 | 57.91 ± 0.83 | 4.27 ± 0.53 |
+| EfficientNetV2-S | 90.73 ± 0.57 | 76.74 ± 0.68 | 37.05 ± 3.32 |
+| MobileNetV3-Large | 96.32 ± 0.51 | 72.93 ± 0.39 | 24.15 ± 0.94 |
+| ResNet50 A1, blur | 96.74 ± 0.21 | 85.83 ± 0.36 | 63.59 ± 2.08 |
+| ResNet50 A2, noise | 96.34 ± 0.15 | 81.01 ± 0.43 | 34.48 ± 2.10 |
+| ResNet50 A3, brightness | 96.62 ± 0.07 | 80.53 ± 0.46 | 39.61 ± 2.39 |
+| ResNet50 A4, all three | 96.39 ± 0.22 | 88.45 ± 0.56 | 61.29 ± 2.04 |
+| ResNet50 A0 + oversampling | 96.70 ± 0.49 | 78.94 ± 0.89 | 36.92 ± 0.67 |
+| ResNet50 A4 + oversampling | 96.16 ± 0.22 | 88.00 ± 0.43 | 59.95 ± 1.93 |
+
+Training with all three corruption families (A4) raised mean corrupted accuracy by 9.08 pp and worst-case accuracy by 22.46 pp over A0, with no significant change in clean accuracy. It also kept the calibration error low under corruption (ECE under severe blur 8.48% for A4 against 32.54% for A0). Oversampling had no significant effect. The full tables are in `outputs/analysis/` and `outputs/extra/`.
 
 ## Scope
 
-This project is about disease screening, not early detection. PlantVillage has no verified disease-stage labels (early, moderate, severe), so the models are not evaluated on how early they can catch a disease.
+This project is about disease screening, not early detection. PlantVillage has no verified disease-stage labels, so the models are not evaluated on how early they catch a disease. The corruptions are synthetic, so the results say how the models handle these three kinds of image degradation, not how they perform on field photos.
 
-## Dataset
+## Data and leakage control
 
-| Item | Detail |
-|---|---|
-| Dataset | PlantVillage, colour images |
-| Source | Hugging Face, [`mohanty/PlantVillage`](https://huggingface.co/datasets/mohanty/PlantVillage) |
-| Size | about 54,300 images |
-| Classes | 38 (14 crop species, diseased and healthy leaves) |
-| Input size | 224 × 224 |
+The experiments use the colour version of PlantVillage (54,305 images, 38 classes, 14 crops) with the official train/test split from [mohanty/PlantVillage](https://github.com/spMohanty/PlantVillage-Dataset). The test partition (10,709 images) is used unchanged. PlantVillage has several photos of the same physical leaf, so the validation set (4,389 images) is taken from the official training partition with StratifiedGroupKFold on leaf groups, and no known leaf group is shared between the splits. The remaining 39,207 images are used for training. The Grad-CAM leaf measure uses the segmented images of the [PlantVillage dataset on Kaggle](https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset).
 
-The dataset is not stored in this repository. Notebook 01 downloads it from Hugging Face. The Kaggle notebooks (02 to 04) read it from a Kaggle dataset copy of the same files and the same split.
+The dataset is not stored in this repository. The image folder, the split lists and the validation indices are read from the paths at the top of `src/run_experiments.py`, which can be changed with the environment variables `PV_ROOT`, `SPLIT_ROOT` and `TRAIN_VAL_FILE`.
 
-### Avoiding leakage
-
-PlantVillage contains several photos of the same physical leaf. If photos of one leaf land in both the training and validation sets, validation scores go up for the wrong reason. The pipeline:
-
-- keeps the official train/test split,
-- builds the validation set with a group-aware, stratified split, so all images of one leaf stay on the same side,
-- checks that no leaf group appears in more than one split before training.
-
-![Class distribution](figures/class_distribution.png)
-
-## Methods
-
-### Baseline model
-
-- EfficientNetV2-S pretrained on ImageNet, with a new 38-class head.
-- Stage 1: train the classifier head only (AdamW, learning rate 1e-3, weight decay 1e-4).
-- Stage 2: unfreeze feature blocks 5 to 7 and fine-tune (AdamW, learning rate 1e-4).
-- Augmentation: horizontal flip, rotation up to 15 degrees, colour jitter.
-- Model selection on validation macro-F1, with early stopping.
-
-### Corruption benchmark
-
-Each trained model is tested on the clean test set and on nine corrupted versions of it:
-
-| Corruption | Mild | Moderate | Severe |
-|---|---|---|---|
-| Gaussian noise (std) | 0.03 | 0.07 | 0.12 |
-| Brightness reduction (factor) | 0.80 | 0.60 | 0.40 |
-| Gaussian blur (radius) | 1.0 | 2.0 | 3.0 |
-
-### Architecture comparison
-
-ResNet50, DenseNet121, EfficientNet-B0 and EfficientNetV2-S are trained on the same split and compared on clean accuracy, clean macro-F1, mean accuracy and macro-F1 across the nine corruptions, and parameter count.
-
-### Corruption-aware training ablation (ResNet50)
-
-| Variant | Corruption added during training |
-|---|---|
-| A0 | none (standard training) |
-| A1 | Gaussian blur |
-| A2 | Gaussian noise |
-| A3 | brightness reduction |
-| A4 | blur, noise and brightness |
-
-A separate run (notebook 03) trains EfficientNetV2-S with a random corruption applied to half of the training images, drawn from Gaussian blur, motion blur, JPEG compression, brightness change and Gaussian noise.
-
-### Class imbalance check
-
-Notebook 04 retrains ResNet50 with a `WeightedRandomSampler` that oversamples rare classes, to see whether imbalance in PlantVillage affects per-class performance.
-
-### Explainability and reliability
-
-- Grad-CAM heatmaps on test images to check whether the model attends to lesions or to the background.
-- Reliability diagram and multiclass Brier score to check whether the predicted confidence matches the observed accuracy.
-
-## Figures
-
-### Baseline training (EfficientNetV2-S)
-
-| Loss and accuracy | Macro-F1 |
-|---|---|
-| ![Loss and accuracy curves](figures/efficientnetv2s_loss_accuracy_curves.png) | ![Macro-F1 curves](figures/efficientnetv2s_macro_f1_curves.png) |
-
-![Confusion matrix](figures/efficientnetv2s_confusion_matrix.png)
-
-### Robustness under corruption
-
-| Accuracy | Macro-F1 |
-|---|---|
-| ![Robustness accuracy](figures/efficientnetv2s_robustness_accuracy.png) | ![Robustness macro-F1](figures/efficientnetv2s_robustness_macro_f1.png) |
-
-### Architecture comparison
-
-| Clean accuracy | Mean accuracy under corruption |
-|---|---|
-| ![Clean accuracy](figures/architectures_clean_accuracy.png) | ![Corruption accuracy](figures/architectures_corruption_accuracy.png) |
-
-| Parameter count | Accuracy vs parameters |
-|---|---|
-| ![Parameters](figures/architectures_parameter_count.png) | ![Accuracy vs parameters](figures/architectures_accuracy_vs_parameters.png) |
-
-### Corruption-aware training ablation
-
-| Clean vs corrupted accuracy | Accuracy per condition |
-|---|---|
-| ![Ablation clean vs corrupted](figures/ablation_clean_vs_corrupted_accuracy.png) | ![Ablation per condition](figures/ablation_accuracy_per_condition.png) |
-
-![Degradation by severity](figures/ablation_degradation_by_severity.png)
-
-### Explainability and calibration
-
-![Grad-CAM example](figures/gradcam_example.png)
-
-![Reliability diagram](figures/reliability_diagram.png)
-
-## Repository structure
+## Repository layout
 
 ```
-robust-plant-disease-classification/
-├── notebooks/
-│   ├── 01_efficientnetv2s_baseline_robustness_xai.ipynb      data audit, split, baseline, corruption tests, Grad-CAM, calibration (Colab)
-│   ├── 02_architecture_comparison_and_ablation.ipynb         four architectures and the A0 to A4 ablation (Kaggle)
-│   ├── 03_corruption_aware_training_efficientnetv2s.ipynb    random-corruption training for EfficientNetV2-S (Kaggle)
-│   └── 04_class_imbalance_oversampling_resnet50.ipynb        oversampling experiment (Kaggle)
-├── figures/                                                  plots exported from the notebooks
-├── requirements.txt
-├── .gitignore
-└── LICENSE
+src/
+  run_experiments.py      training and evaluation of one configuration over several seeds
+  analysis.py             summary tables, paired t-tests, calibration, compute cost
+  gradcam.py              Grad-CAM on a fixed sample, share of the map on the leaf
+  extra_stats.py          per-class metrics, confusion matrices, reliability bins
+  make_figures.py         Figures 5 to 18 of the paper
+  methodology_diagram.py  Figure 1
+notebooks/
+  five_seed_runs/         the experiments reported in the paper
+    01_training.ipynb     the 55 training runs (GPU)
+    02_analysis.ipynb     everything after training (CPU)
+    kaggle_sessions/      the same runs as they were executed on Kaggle, one notebook per session
+  01_ to 04_*.ipynb       first experiments (single seed)
+outputs/                  results of the five-seed runs
+  results/                one JSON per run: settings, training history, accuracy and macro F1 per test condition
+  analysis/  extra/  gradcam/  figures/
+figures/                  plots from the first experiments
 ```
 
-## How to run
+The saved logits and checkpoints are not included because of their size, so `analysis.py`, `extra_stats.py` and the calibration figures need the training runs to be repeated. The two Grad-CAM figures (fig17, fig18) are stored as JPEG here to keep the repository small; `make_figures.py` writes them as PNG.
 
-1. Clone the repository and install the dependencies:
+## First experiments
 
-   ```bash
-   git clone https://github.com/nadim7009/robust-plant-disease-classification.git
-   cd robust-plant-disease-classification
-   pip install -r requirements.txt
-   ```
+Notebooks 01 to 04 and the `figures/` folder are the first, single-seed version of the study: an EfficientNetV2-S baseline trained in two stages (head first, then feature blocks 5 to 7), the architecture comparison with the A0 to A4 ablation, a random-corruption training run for EfficientNetV2-S and an oversampling check on ResNet50. Notebook 01 runs on Google Colab and downloads PlantVillage from Hugging Face; notebooks 02 to 04 run on Kaggle. The paper reports the five-seed runs, which use one training budget for every configuration and frozen backbones throughout.
 
-2. Run the notebooks in order. A GPU is strongly recommended.
-   - Notebook 01 was written for Google Colab. It mounts Google Drive and downloads PlantVillage from Hugging Face. Change `PROJECT_DIR` if you run it elsewhere.
-   - Notebooks 02 to 04 were written for Kaggle and read data from `/kaggle/input/...`. Update the dataset paths at the top of each notebook for your setup.
+## Running
 
-3. Model checkpoints (`.pth`) are written to the experiment folders during training. They are not included in the repository because of their size.
+```
+git clone https://github.com/nadim7009/robust-plant-disease-classification.git
+cd robust-plant-disease-classification
+pip install -r requirements.txt
+cd src
+python run_experiments.py --arch resnet50 --variant A0 --seeds 0 --smoke   # pipeline check
+python run_experiments.py --arch resnet50 --variant A4 --seeds 0 1 2 3 4 --corrupt_before_resize
+OUT_DIR=/path/to/outputs python analysis.py
+```
 
-## Reproducibility notes
+`notebooks/five_seed_runs/01_training.ipynb` lists every command we ran. Outputs go to `OUT_DIR`, which defaults to `/kaggle/working/revision`. A run that already has a results JSON is skipped, and an interrupted run resumes from its last finished epoch.
 
-- Random seeds are fixed for Python, NumPy and PyTorch.
-- The train/validation split and the class-to-index mapping are saved to disk and reused across notebooks, so all models see exactly the same data.
-- Robustness evaluation is resumable, so a Colab or Kaggle disconnect does not restart the full benchmark.
+We ran the five-seed experiments on Kaggle with an NVIDIA Tesla T4 and PyTorch 2.11. One training run took 20 to 40 minutes. The noisy test images are generated with a fixed seed per image, so every model is tested on the same corrupted images and runs with the same seed can be compared pairwise.
 
 ## Citation
 
@@ -165,9 +88,8 @@ A citation will be added once the paper is published.
 
 ## License
 
-Released under the MIT License. See [LICENSE](LICENSE).
+Released under the MIT License. See `LICENSE`.
 
 ## Contact
 
-Nadim Mahmud, Daffodil International University
-[LinkedIn](https://www.linkedin.com/in/nadim-mahmud-ml/) · [GitHub](https://github.com/nadim7009)
+Nadim Mahmud, Daffodil International University. [LinkedIn](https://www.linkedin.com/in/nadim-mahmud-ml) · [GitHub](https://github.com/nadim7009)

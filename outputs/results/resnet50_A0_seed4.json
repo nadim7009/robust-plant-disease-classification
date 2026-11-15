@@ -1,0 +1,101 @@
+{
+  "run": "resnet50_A0_seed4",
+  "arch": "resnet50",
+  "variant": "A0",
+  "seed": 4,
+  "oversample": false,
+  "corrupt_before_resize": false,
+  "smoke": false,
+  "total_params": 23585894,
+  "trainable_params": 77862,
+  "epochs_trained": 6,
+  "best_epoch": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "unique_train_images": 39207,
+      "acc": 92.75461380724539,
+      "macro_f1": 90.73552963772198
+    },
+    {
+      "epoch": 2,
+      "unique_train_images": 39207,
+      "acc": 95.53429027113238,
+      "macro_f1": 94.96010304720804
+    },
+    {
+      "epoch": 3,
+      "unique_train_images": 39207,
+      "acc": 96.1038961038961,
+      "macro_f1": 95.33822525369358
+    },
+    {
+      "epoch": 4,
+      "unique_train_images": 39207,
+      "acc": 95.64821143768512,
+      "macro_f1": 94.8209661622534
+    },
+    {
+      "epoch": 5,
+      "unique_train_images": 39207,
+      "acc": 96.21781727044885,
+      "macro_f1": 95.25595258458456
+    },
+    {
+      "epoch": 6,
+      "unique_train_images": 39207,
+      "acc": 96.05832763727501,
+      "macro_f1": 95.31392542423526
+    }
+  ],
+  "train_seconds": 1008.4,
+  "peak_gpu_mem_mb": 445.2,
+  "results": {
+    "clean": {
+      "acc": 95.7605752171071,
+      "macro_f1": 93.92870395424274
+    },
+    "brightness_mild": {
+      "acc": 95.73256139695583,
+      "macro_f1": 93.80315194453938
+    },
+    "brightness_moderate": {
+      "acc": 94.62134653095528,
+      "macro_f1": 92.71536624497668
+    },
+    "brightness_severe": {
+      "acc": 89.59753478382669,
+      "macro_f1": 87.18811677777396
+    },
+    "gaussian_noise_mild": {
+      "acc": 92.31487533850033,
+      "macro_f1": 89.92164872236953
+    },
+    "gaussian_noise_moderate": {
+      "acc": 83.43449435054627,
+      "macro_f1": 78.96865788549373
+    },
+    "gaussian_noise_severe": {
+      "acc": 64.17032402651975,
+      "macro_f1": 54.85656234177911
+    },
+    "gaussian_blur_mild": {
+      "acc": 88.39294051732189,
+      "macro_f1": 86.10866902651348
+    },
+    "gaussian_blur_moderate": {
+      "acc": 57.86721449248296,
+      "macro_f1": 53.80360625965761
+    },
+    "gaussian_blur_severe": {
+      "acc": 37.5758707629097,
+      "macro_f1": 32.14343823428876
+    }
+  },
+  "mean_corr_acc": 78.18968468889096,
+  "mean_corr_macro_f1": 74.38991304859913,
+  "worst_acc": 37.5758707629097,
+  "worst_macro_f1": 32.14343823428876,
+  "mean_unique_train_images": 39207.0,
+  "torch": "2.11.0+cu130"
+}

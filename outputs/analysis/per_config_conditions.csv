@@ -1,0 +1,12 @@
+config,clean,brightness_mild,brightness_moderate,brightness_severe,gaussian_noise_mild,gaussian_noise_moderate,gaussian_noise_severe,gaussian_blur_mild,gaussian_blur_moderate,gaussian_blur_severe,unique_imgs,epochs,worst_condition
+densenet121_A0,95.731,95.585,94.849,91.751,93.852,86.359,69.611,81.974,52.319,35.523,39207.0,9.0,gaussian_blur_severe
+efficientnet_b0_A0,96.009,96.114,94.41,84.979,91.525,49.568,4.271,68.667,20.913,10.726,39207.0,9.4,gaussian_noise_severe
+efficientnet_v2_s_A0,90.731,90.197,89.183,84.163,89.082,84.312,74.225,82.318,60.157,37.047,39207.0,9.0,gaussian_blur_severe
+mobilenet_v3_large_A0,96.315,96.274,95.137,89.543,94.179,82.684,55.113,83.952,35.367,24.146,39207.0,8.6,gaussian_blur_severe
+resnet50_A0,96.582,96.646,95.69,91.15,93.338,84.536,65.003,89.646,59.479,38.829,39207.0,9.2,gaussian_blur_severe
+resnet50_A0_os,96.704,96.694,95.804,91.678,93.191,83.827,64.848,89.239,58.276,36.918,23755.047,9.2,gaussian_blur_severe
+resnet50_A1,96.745,96.758,95.865,91.932,94.179,85.246,64.535,95.361,82.749,65.864,39207.0,10.0,gaussian_noise_severe
+resnet50_A2,96.341,96.235,95.391,90.369,96.201,94.661,86.673,85.014,50.04,34.476,39207.0,10.0,gaussian_blur_severe
+resnet50_A3,96.62,96.685,96.108,93.518,94.418,86.383,66.443,90.494,61.111,39.606,39207.0,10.0,gaussian_blur_severe
+resnet50_A4,96.388,96.242,95.83,93.575,96.026,94.38,85.074,94.267,79.363,61.289,39207.0,10.0,gaussian_blur_severe
+resnet50_A4_os,96.164,96.08,95.533,93.307,95.874,93.858,84.394,93.917,79.077,59.951,23744.949,9.8,gaussian_blur_severe

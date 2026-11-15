@@ -1,0 +1,3 @@
+kind,n,cam_on_leaf_mean,cam_on_leaf_median,leaf_area_mean,share_maps_mostly_off_leaf
+correct,49,0.6694,0.6969,0.426,0.16
+wrong,50,0.5321,0.5225,0.432,0.46

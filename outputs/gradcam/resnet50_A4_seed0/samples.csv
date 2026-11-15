@@ -1,0 +1,101 @@
+index,kind,true,pred,conf,cam_on_leaf,leaf_area
+905,correct,Apple___healthy,Apple___healthy,99.82216,0.8056079745292664,0.5151466836734694
+321,correct,Potato___Late_blight,Potato___Late_blight,99.77671,0.5587037801742554,0.45595503826530615
+9033,correct,Blueberry___healthy,Blueberry___healthy,96.64119,0.5985816121101379,0.41133211096938777
+9049,correct,Blueberry___healthy,Blueberry___healthy,97.98971,0.41519641876220703,0.17827248086734693
+7811,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,99.98504,0.8183960914611816,0.5345982142857143
+9142,correct,Tomato___Spider_mites Two-spotted_spider_mite,Tomato___Spider_mites Two-spotted_spider_mite,37.55387,0.2690843939781189,0.31311782525510207
+1060,correct,Corn_(maize)___Northern_Leaf_Blight,Corn_(maize)___Northern_Leaf_Blight,98.95712,0.925973117351532,0.7840401785714286
+5470,correct,Potato___Early_blight,Potato___Early_blight,99.284744,0.8608271479606628,0.5780652104591837
+963,correct,Apple___healthy,Apple___healthy,97.62214,0.5460478663444519,0.4060905612244898
+2927,correct,Soybean___healthy,Soybean___healthy,98.08713,0.7496175765991211,0.6766581632653061
+5397,correct,Potato___Early_blight,Potato___Early_blight,99.7157,0.8693885803222656,0.6246213329081632
+8672,correct,Peach___Bacterial_spot,Peach___Bacterial_spot,99.975,0.7290127277374268,0.5084701849489796
+5816,correct,"Pepper,_bell___healthy","Pepper,_bell___healthy",97.19829,0.8983057141304016,0.5137515943877551
+3009,correct,Soybean___healthy,Soybean___healthy,99.828415,0.7732794284820557,0.6338289221938775
+8186,correct,Squash___Powdery_mildew,Squash___Powdery_mildew,99.98714,0.855022668838501,0.46603954081632654
+4224,correct,Tomato___healthy,Tomato___healthy,99.781044,0.5302083492279053,0.5125956632653061
+481,correct,Tomato___Early_blight,Tomato___Early_blight,71.14625,0.6406273245811462,0.4194834183673469
+256,correct,Potato___Late_blight,Potato___Late_blight,99.7976,0.8265261650085449,0.42635921556122447
+6967,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,96.02497,0.6014524102210999,0.35233976403061223
+7212,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,90.70598,0.6188578009605408,0.3614477040816326
+192,correct,Potato___Late_blight,Potato___Late_blight,63.85391,0.6222707033157349,0.4303651147959184
+5803,correct,"Pepper,_bell___healthy","Pepper,_bell___healthy",99.95921,0.8951168656349182,0.5608258928571429
+8708,correct,Peach___Bacterial_spot,Peach___Bacterial_spot,99.105545,0.838049590587616,0.6130819515306123
+6827,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,99.65623,0.6554127931594849,0.30739795918367346
+6968,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,99.38659,0.6207298636436462,0.3018375318877551
+2810,correct,Orange___Haunglongbing_(Citrus_greening),Orange___Haunglongbing_(Citrus_greening),90.345085,0.16593748331069946,0.3647361288265306
+6491,correct,Tomato___Septoria_leaf_spot,Tomato___Septoria_leaf_spot,41.921135,0.43551960587501526,0.507453762755102
+67,correct,Raspberry___healthy,Raspberry___healthy,90.70201,0.6830156445503235,0.5184151785714286
+1955,correct,Orange___Haunglongbing_(Citrus_greening),Orange___Haunglongbing_(Citrus_greening),99.99981,0.8257967829704285,0.5362723214285714
+9722,correct,Tomato___Leaf_Mold,Tomato___Leaf_Mold,99.75664,0.5341559648513794,0.30976961096938777
+1431,correct,Corn_(maize)___Common_rust_,Corn_(maize)___Common_rust_,99.994446,,
+380,correct,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,87.96856,0.22780711948871613,0.31192203443877553
+39,correct,Raspberry___healthy,Raspberry___healthy,99.930916,0.8441057205200195,0.48232222576530615
+9964,correct,"Pepper,_bell___Bacterial_spot","Pepper,_bell___Bacterial_spot",95.26006,0.8738048076629639,0.47548628826530615
+3321,correct,Soybean___healthy,Soybean___healthy,99.85428,0.7773326635360718,0.47841597576530615
+1963,correct,Orange___Haunglongbing_(Citrus_greening),Orange___Haunglongbing_(Citrus_greening),100.0,0.7918176054954529,0.5158242984693877
+10361,correct,Tomato___Late_blight,Tomato___Late_blight,87.859215,0.738479495048523,0.5253109056122449
+6617,correct,Tomato___Septoria_leaf_spot,Tomato___Septoria_leaf_spot,97.95564,0.676655113697052,0.41818797831632654
+4324,correct,Tomato___healthy,Tomato___healthy,99.797264,0.6133502125740051,0.38024154974489793
+9216,correct,Tomato___Spider_mites Two-spotted_spider_mite,Tomato___Spider_mites Two-spotted_spider_mite,48.783234,0.25880658626556396,0.38430723852040816
+5936,correct,Tomato___Bacterial_spot,Tomato___Bacterial_spot,99.38162,0.46264007687568665,0.5716876594387755
+4528,correct,Grape___Esca_(Black_Measles),Grape___Esca_(Black_Measles),99.6299,0.7892444133758545,0.5036272321428571
+7823,correct,Squash___Powdery_mildew,Squash___Powdery_mildew,99.44375,0.9999783039093018,0.9999800701530612
+6788,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,87.71042,0.5709049701690674,0.2632533482142857
+97,correct,Raspberry___healthy,Raspberry___healthy,99.98917,0.8672019243240356,0.5844029017857143
+3248,correct,Soybean___healthy,Soybean___healthy,99.9262,0.738314688205719,0.6589405293367347
+5644,correct,"Pepper,_bell___healthy","Pepper,_bell___healthy",96.36387,0.7631427645683289,0.447265625
+7200,correct,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Tomato_Yellow_Leaf_Curl_Virus,99.68863,0.7612859606742859,0.4375597895408163
+5991,correct,Tomato___Bacterial_spot,Tomato___Bacterial_spot,79.79235,0.58503258228302,0.48465401785714285
+5155,correct,Tomato___Target_Spot,Tomato___Target_Spot,94.370964,0.5450901389122009,0.5181162308673469
+6645,wrong,Tomato___Septoria_leaf_spot,Tomato___Early_blight,44.90806,0.7526175379753113,0.47568558673469385
+529,wrong,Tomato___Early_blight,Tomato___Target_Spot,85.1337,0.6036242246627808,0.43728077168367346
+9375,wrong,Tomato___Spider_mites Two-spotted_spider_mite,Tomato___Target_Spot,52.35091,0.7822717428207397,0.38474569515306123
+637,wrong,Tomato___Early_blight,Tomato___Target_Spot,91.214195,0.36649805307388306,0.2633529974489796
+7299,wrong,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Bacterial_spot,76.95228,0.6631878018379211,0.5705915178571429
+10289,wrong,Tomato___Late_blight,Tomato___Early_blight,63.63088,0.5503436326980591,0.26622289540816324
+376,wrong,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,Corn_(maize)___Northern_Leaf_Blight,69.80455,0.9096707701683044,0.7973732461734694
+10345,wrong,Tomato___Late_blight,Tomato___healthy,33.10387,0.46736544370651245,0.27291932397959184
+953,wrong,Apple___healthy,Squash___Powdery_mildew,54.74357,0.3061770498752594,0.33237005739795916
+6044,wrong,Tomato___Bacterial_spot,Tomato___Septoria_leaf_spot,63.54938,0.8854894042015076,0.5010961415816326
+6657,wrong,Tomato___Septoria_leaf_spot,Tomato___Target_Spot,72.10226,0.4116842746734619,0.23955676020408162
+660,wrong,Tomato___Early_blight,"Pepper,_bell___Bacterial_spot",62.653564,0.7730231881141663,0.5799585459183674
+887,wrong,Apple___healthy,Cherry_(including_sour)___Powdery_mildew,47.495045,0.20812103152275085,0.3723294005102041
+392,wrong,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,Corn_(maize)___Northern_Leaf_Blight,92.564865,0.6944447755813599,0.6125837053571429
+10118,wrong,Tomato___Late_blight,Tomato___Leaf_Mold,29.493193,0.2560552656650543,0.23435507015306123
+10133,wrong,Tomato___Late_blight,Tomato___Early_blight,62.62031,0.3478163182735443,0.26640226403061223
+5188,wrong,Tomato___Target_Spot,Apple___healthy,44.673473,0.7458854913711548,0.42910953443877553
+6695,wrong,Tomato___Septoria_leaf_spot,Tomato___Tomato_mosaic_virus,78.234116,0.16434791684150696,0.22991071428571427
+9438,wrong,Apple___Black_rot,Apple___healthy,34.496265,0.42361167073249817,0.481265943877551
+526,wrong,Tomato___Early_blight,Grape___Esca_(Black_Measles),31.455452,0.8069283962249756,0.5047233737244898
+5200,wrong,Tomato___Target_Spot,Tomato___Spider_mites Two-spotted_spider_mite,33.37633,0.19910165667533875,0.3645567602040816
+643,wrong,Tomato___Early_blight,Tomato___Leaf_Mold,63.764603,0.5548405051231384,0.3778698979591837
+551,wrong,Tomato___Early_blight,Tomato___Spider_mites Two-spotted_spider_mite,44.292263,0.3314209282398224,0.41836734693877553
+1117,wrong,Corn_(maize)___Northern_Leaf_Blight,Corn_(maize)___healthy,79.2079,1.0,1.0
+10174,wrong,Tomato___Late_blight,Tomato___Leaf_Mold,38.859196,0.34775882959365845,0.37928491709183676
+5126,wrong,Tomato___Target_Spot,Tomato___Septoria_leaf_spot,68.54189,0.2946169078350067,0.3671875
+5887,wrong,Tomato___Bacterial_spot,Tomato___Septoria_leaf_spot,68.91184,0.8636344075202942,0.41637436224489793
+5011,wrong,Cherry_(including_sour)___Powdery_mildew,Apple___Apple_scab,63.689144,0.7248967289924622,0.8059630102040817
+168,wrong,Potato___Late_blight,Tomato___Late_blight,87.3165,0.4372798204421997,0.3047672193877551
+452,wrong,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,Corn_(maize)___Northern_Leaf_Blight,63.336964,0.9856894612312317,0.9006098533163265
+10288,wrong,Tomato___Late_blight,Tomato___Leaf_Mold,25.910166,0.05218837782740593,0.30106026785714285
+6306,wrong,Apple___Apple_scab,Apple___Black_rot,58.53816,0.5998126864433289,0.5809550382653061
+215,wrong,Potato___Late_blight,Tomato___Late_blight,51.65237,0.6997825503349304,0.5537109375
+6702,wrong,Tomato___Septoria_leaf_spot,Tomato___Leaf_Mold,32.58495,0.31099650263786316,0.4630500637755102
+3094,wrong,Soybean___healthy,"Pepper,_bell___healthy",68.491455,0.8448405265808105,0.5969985650510204
+6435,wrong,Tomato___Septoria_leaf_spot,Tomato___Target_Spot,42.73863,0.48770228028297424,0.47462930484693877
+4456,wrong,Grape___Esca_(Black_Measles),Grape___Black_rot,57.10724,0.5847737789154053,0.49838568239795916
+3074,wrong,Soybean___healthy,Blueberry___healthy,81.08079,0.8112596273422241,0.46910873724489793
+6413,wrong,Tomato___Septoria_leaf_spot,Tomato___Leaf_Mold,47.49439,0.18723654747009277,0.36421795280612246
+10142,wrong,Tomato___Late_blight,Potato___Late_blight,81.898285,0.5975833535194397,0.29575892857142855
+6685,wrong,Tomato___Septoria_leaf_spot,Tomato___Spider_mites Two-spotted_spider_mite,28.78258,0.07080856710672379,0.08225047831632654
+6327,wrong,Apple___Apple_scab,Peach___Bacterial_spot,27.102655,0.33966612815856934,0.4135044642857143
+10067,wrong,"Pepper,_bell___Bacterial_spot","Pepper,_bell___healthy",55.80329,0.7315533757209778,0.47353316326530615
+6978,wrong,Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Late_blight,20.702236,0.6133170127868652,0.29041772959183676
+9182,wrong,Tomato___Spider_mites Two-spotted_spider_mite,Tomato___Target_Spot,52.051716,0.22979755699634552,0.3706154336734694
+5270,wrong,Tomato___Target_Spot,Tomato___Spider_mites Two-spotted_spider_mite,36.80615,0.2133760154247284,0.31367586096938777
+10681,wrong,Potato___healthy,Potato___Late_blight,54.18697,0.8197237253189087,0.5006776147959183
+166,wrong,Potato___Late_blight,Tomato___Late_blight,67.365555,0.4668896794319153,0.28689014668367346
+6611,wrong,Tomato___Septoria_leaf_spot,Tomato___Leaf_Mold,98.96828,0.16324292123317719,0.06782126913265306
+520,wrong,Tomato___Early_blight,Tomato___Bacterial_spot,45.641876,0.7441530823707581,0.3702367665816326

@@ -1,0 +1,11 @@
+true,pred,mean_errors_per_seed
+Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,Corn_(maize)___Northern_Leaf_Blight,18.8
+Tomato___Target_Spot,Tomato___Spider_mites Two-spotted_spider_mite,17.4
+Tomato___Early_blight,Tomato___Target_Spot,15.2
+Corn_(maize)___Northern_Leaf_Blight,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,13.6
+Tomato___Early_blight,Tomato___Septoria_leaf_spot,13.0
+Tomato___Tomato_Yellow_Leaf_Curl_Virus,Tomato___Spider_mites Two-spotted_spider_mite,12.2
+Tomato___Early_blight,Tomato___Late_blight,11.2
+Potato___Late_blight,Tomato___Late_blight,10.4
+Grape___Black_rot,Grape___Esca_(Black_Measles),9.2
+Tomato___Spider_mites Two-spotted_spider_mite,Tomato___Target_Spot,9.2

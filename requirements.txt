@@ -2,6 +2,7 @@ torch>=2.0
 torchvision>=0.15
 numpy
 pandas
+scipy
 scikit-learn
 matplotlib
 seaborn
